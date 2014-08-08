@@ -4,5 +4,6 @@
     <string name="app_name">IView</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_landing_page">LandingPageActivity</string>
 
 </resources>
