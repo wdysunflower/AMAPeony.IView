@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.media.Image;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
@@ -76,6 +75,10 @@ public class CirclePageIndicator extends View implements IPageIndicator {
     @Override
     public void onPageSelected(int position) {
         _currentPosition = position;
+        int count =  _viewPager.getAdapter().getCount();
+        if (_currentPosition == count-1 && _pageListener != null)
+            _pageListener.OnLastPageSelected();
+
         invalidate();
     }
 
@@ -94,7 +97,7 @@ public class CirclePageIndicator extends View implements IPageIndicator {
                 if (_viewPager.getCurrentItem() == _viewPager.getAdapter()
                         .getCount() - 1 && !misScrolled) {
                     if (_pageListener != null)
-                        _pageListener.OnBoundaryMoveEvent();
+                        _pageListener.OnBoundaryMove();
                 }
                 misScrolled = true;
                 break;

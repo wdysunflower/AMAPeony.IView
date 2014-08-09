@@ -5,5 +5,7 @@ package com.peony.iview.custom;
  */
 public interface OnPageListener {
 
-    public void OnBoundaryMoveEvent();
+    public void OnBoundaryMove();
+
+    public void OnLastPageSelected();
 }
