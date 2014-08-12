@@ -42,10 +42,11 @@ public class LoginActivity extends FragmentActivity {
         mRegister = new RegisterFragment();
         mSign = new SignFragment();
 
+        // ActionBar
+        ActionBar actionBar = this.getActionBar();
+        actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_gradient_bg));
         LoginLocationTypes type = (LoginLocationTypes) getIntent().getSerializableExtra(LOGIN_LOCATION);
-
         if (type == LoginLocationTypes.Landing) {
-            ActionBar actionBar = this.getActionBar();
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
