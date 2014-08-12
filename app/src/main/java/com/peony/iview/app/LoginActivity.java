@@ -1,37 +1,37 @@
 package com.peony.iview.app;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.os.AsyncTask;
-import android.os.Build;
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.peony.iview.fragment.RegisterFragment;
 import com.peony.iview.fragment.SignFragment;
-import com.peony.iview.global.ShowToastUtil;
-
-import static com.peony.iview.app.LoginActivity.LoginFragmentModes.*;
 
 public class LoginActivity extends FragmentActivity {
-    public static final String LOGIN_MODE = "LoginMode";
-    private FragmentManager mFragManager;
+    public enum LoginFragmentModes {
+        Register,
+        Sign
+    }
 
-    RegisterFragment mRegister;
-    SignFragment mSign;
+    public enum LoginLocationTypes {
+        Landing,
+        Direct
+    }
+
+    public static final String LOGIN_MODE = "LoginMode";
+    public static final String LOGIN_LOCATION = "LoginLocation";
+
+    private LoginFragmentModes mCurrentMode;
+
+    private FragmentManager mFragManager;
+    private RegisterFragment mRegister;
+    private SignFragment mSign;
+
+    private MenuItem mChangeItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,47 +42,61 @@ public class LoginActivity extends FragmentActivity {
         mRegister = new RegisterFragment();
         mSign = new SignFragment();
 
-        LoginFragmentModes modes = (LoginFragmentModes) getIntent().getSerializableExtra(LOGIN_MODE);
-        setMode(modes);
+        LoginLocationTypes type = (LoginLocationTypes) getIntent().getSerializableExtra(LOGIN_LOCATION);
+
+        if (type == LoginLocationTypes.Landing) {
+            ActionBar actionBar = this.getActionBar();
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
-    private long exitTime = 0;
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        switch (keyCode) {
-            case KeyEvent.KEYCODE_BACK:
-                if ((System.currentTimeMillis() - exitTime) > 2000) {
-                    ShowToastUtil.showToast(this, "再按一次退出程序");
-                    exitTime = System.currentTimeMillis();
-                } else {
-                    finish();
-                    System.exit(0);
-                }
-                return true;
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_login, menu);
+        mChangeItem = menu.findItem(R.id.menu_change);
+
+        LoginFragmentModes modes = (LoginFragmentModes) getIntent().getSerializableExtra(LOGIN_MODE);
+        setMode(modes);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_change:
+                ChangeMode();
+                break;
+            case android.R.id.home:
+                finish();
+                break;
         }
-        return super.onKeyDown(keyCode, event);
+        return super.onOptionsItemSelected(item);
     }
 
-    // 登录
-    public enum LoginFragmentModes {
-        Register,
-        Sign
+    private void ChangeMode() {
+        if (mCurrentMode == LoginFragmentModes.Sign)
+            setMode(LoginFragmentModes.Register);
+        else setMode(LoginFragmentModes.Sign);
     }
 
-    public void setMode(LoginFragmentModes mode) {
+    private void setMode(LoginFragmentModes mode) {
         FragmentTransaction trans = mFragManager.beginTransaction();
         switch (mode) {
             case Sign:
                 trans.replace(R.id.main_frame, mSign);
                 this.setTitle(R.string.title_activity_login_sign);
+                if (mChangeItem != null)
+                    mChangeItem.setTitle(R.string.title_activity_login_register);
                 break;
             case Register:
                 trans.replace(R.id.main_frame, mRegister);
                 this.setTitle(R.string.title_activity_login_register);
+                if (mChangeItem != null)
+                    mChangeItem.setTitle(R.string.title_activity_login_sign);
                 break;
         }
         trans.commit();
-        //mTitleBar.setMode(mode);
+        mCurrentMode = mode;
     }
 }
 

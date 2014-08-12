@@ -31,15 +31,7 @@ public class LandingActivity extends Activity implements OnPageListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        try
-        {
-            setContentView(R.layout.activity_landing);
-        }
-        catch (Exception ex)
-        {
-            Log.d("Exceprion",ex.getMessage());
-        }
+        setContentView(R.layout.activity_landing);
 
         InitialPageView();
 
@@ -99,8 +91,7 @@ public class LandingActivity extends Activity implements OnPageListener {
     public void OnLastPageSelected() {
         Button button = (Button) findViewById(R.id.bt_begin);
         int vis = button.getVisibility();
-        if (vis != View.VISIBLE)
-        {
+        if (vis != View.VISIBLE) {
             DataHelper.SetData(this, ConstDefine.IS_FIRST_SHOW, false);
             button.setVisibility(View.VISIBLE);
         }
@@ -113,9 +104,8 @@ public class LandingActivity extends Activity implements OnPageListener {
     private void Begin() {
         Intent intent = new Intent(this, LoginActivity.class);
         intent.putExtra(LoginActivity.LOGIN_MODE, LoginActivity.LoginFragmentModes.Sign);
-        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        intent.putExtra(LoginActivity.LOGIN_LOCATION,LoginActivity.LoginLocationTypes.Landing);
         startActivity(intent);
-        finish();
     }
 
     private class GuidePageAdapter extends PagerAdapter {
