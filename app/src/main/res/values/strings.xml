@@ -3,7 +3,6 @@
 
     <string name="app_name">IView</string>
 
-    <string name="title_activity_landing">LandingPageActivity</string>
     <string name="bt_landing_begin">开始体验</string>
 
     <string name="title_activity_login_sign">登录</string>
