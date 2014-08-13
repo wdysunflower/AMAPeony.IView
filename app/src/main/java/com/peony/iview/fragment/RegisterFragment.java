@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -48,10 +47,11 @@ public class RegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_register, container, false);
-        mLoginFormView = view.findViewById(R.id.login_form);
+        mLoginFormView = view.findViewById(R.id.login_scrollview);
         mProgressView = view.findViewById(R.id.login_progress);
 
         mUserNameView = (AutoCompleteTextView) view.findViewById(R.id.username);
+        mUserNameView.requestFocus();
         mPasswordView = (EditText) view.findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

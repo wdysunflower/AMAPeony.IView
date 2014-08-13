@@ -28,7 +28,7 @@ public class SignFragment extends Fragment {
     private AutoCompleteTextView mUserNameView;
     private EditText mPasswordView;
     private View mProgressView;
-    private View mLoginFormView;
+    private View mLoginScrollView;
 
     private Activity mHostActivity;
 
@@ -46,10 +46,11 @@ public class SignFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sign, container, false);
-        mLoginFormView = view.findViewById(R.id.login_form);
+        mLoginScrollView = view.findViewById(R.id.login_scrollview);
         mProgressView = view.findViewById(R.id.login_progress);
 
         mUserNameView = (AutoCompleteTextView) view.findViewById(R.id.username);
+        mUserNameView.requestFocus();
         mPasswordView = (EditText) view.findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -109,13 +110,13 @@ public class SignFragment extends Fragment {
         }
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password)) {
+        if (TextUtils.isEmpty(password)) {
             mPasswordView.setError(getString(R.string.error_field_required));
             focusView = mPasswordView;
             cancel = true;
         }
 
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+        if (!isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
@@ -136,12 +137,12 @@ public class SignFragment extends Fragment {
 
     private boolean isUserNameValid(String username) {
         //TODO: Replace this with your own logic
-        return username.length() > 6;
+        return username.length() > 2;
     }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() > 6;
     }
 
     /**
@@ -155,12 +156,12 @@ public class SignFragment extends Fragment {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            mLoginFormView.animate().setDuration(shortAnimTime).alpha(
+            mLoginScrollView.setVisibility(show ? View.GONE : View.VISIBLE);
+            mLoginScrollView.animate().setDuration(shortAnimTime).alpha(
                     show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+                    mLoginScrollView.setVisibility(show ? View.GONE : View.VISIBLE);
                 }
             });
 
@@ -176,7 +177,7 @@ public class SignFragment extends Fragment {
             // The ViewPropertyAnimator APIs are not available, so simply show
             // and hide the relevant UI components.
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+            mLoginScrollView.setVisibility(show ? View.GONE : View.VISIBLE);
         }
     }
 
@@ -227,5 +228,4 @@ public class SignFragment extends Fragment {
             showProgress(false);
         }
     }
-
 }

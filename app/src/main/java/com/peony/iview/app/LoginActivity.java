@@ -65,7 +65,7 @@ public class LoginActivity extends FragmentActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         setMenuItemFore();
-        
+
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_login, menu);
         mChangeItem = menu.findItem(R.id.menu_change);
