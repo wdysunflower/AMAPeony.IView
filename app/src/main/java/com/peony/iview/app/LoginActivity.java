@@ -1,15 +1,26 @@
 package com.peony.iview.app;
 
 import android.app.ActionBar;
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.AttributeSet;
+import android.util.Log;
+import android.view.InflateException;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.peony.iview.fragment.RegisterFragment;
 import com.peony.iview.fragment.SignFragment;
+
+import java.lang.reflect.Field;
 
 public class LoginActivity extends FragmentActivity {
     public enum LoginFragmentModes {
@@ -53,12 +64,14 @@ public class LoginActivity extends FragmentActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_login, menu);
+        setMenuItemFore();
+        
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_login, menu);
         mChangeItem = menu.findItem(R.id.menu_change);
-
         LoginFragmentModes modes = (LoginFragmentModes) getIntent().getSerializableExtra(LOGIN_MODE);
         setMode(modes);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -72,6 +85,43 @@ public class LoginActivity extends FragmentActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void setMenuItemFore() {
+        try {
+            LayoutInflater layoutInflater = getLayoutInflater();
+            Field field = LayoutInflater.class.getDeclaredField("mFactorySet");
+            field.setAccessible(true);
+            field.setBoolean(layoutInflater, false);
+
+            getLayoutInflater().setFactory(new LayoutInflater.Factory() {
+                @Override
+                public View onCreateView(String name, Context context,
+                                         AttributeSet attrs) {
+                    System.out.println(name);
+                    if (name.equalsIgnoreCase("com.android.internal.view.menu.IconMenuItemView")
+                            || name.equalsIgnoreCase("com.android.internal.view.menu.ActionMenuItemView")) {
+                        try {
+                            final View view;
+                            LayoutInflater f = getLayoutInflater();
+                            view = f.createView(name, null, attrs);
+                            System.out.println((view instanceof TextView));
+                            if (view instanceof TextView) {
+                                ((TextView) view).setTextColor(R.color.rainbow_2);
+                            }
+                            return view;
+                        } catch (InflateException e) {
+                            e.printStackTrace();
+                        } catch (ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    return null;
+                }
+            });
+        } catch (Exception ex) {
+            Log.d("SetMenuItemFore", ex.getMessage());
+        }
     }
 
     private void ChangeMode() {
