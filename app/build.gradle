@@ -31,6 +31,10 @@ dependencies {
     
     // You must install or update the Google Repository through the SDK manager to use this dependency.
     // The Google Repository (separate from the corresponding library) can be found in the Extras category.
-    // 
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    //
+    // You must install or update the Google Repository through the SDK manager to use this dependency.
+    // The Google Repository (separate from the corresponding library) can be found in the Extras category.
+    //
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/AMap_2DMap_V2.2.1.jar')
 }
