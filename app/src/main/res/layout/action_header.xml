@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.peony.iview.module.ActionActivity"
+    android:orientation="vertical"
+    android:background="@drawable/actionbar_gradient_bg">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true">
+
+            <ImageView
+                android:id="@+id/action_image_ico"
+                style="@style/AppIcoTheme" />
+
+            <Spinner
+                android:id="@+id/action_spinner_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp">
+
+            <Spinner
+                android:id="@+id/action_spinner_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <SearchView
+        android:id="@+id/action_search_view"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:gravity="center_vertical"
+        android:iconifiedByDefault="true"
+        android:inputType="textCapWords"
+        android:imeOptions="actionSearch"
+        android:queryHint=""
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" />
+</RelativeLayout>

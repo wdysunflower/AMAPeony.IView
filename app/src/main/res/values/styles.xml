@@ -5,4 +5,33 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="SeparatorTheme">
+        <!-- android:layout_width="fill_parent"
+         android:layout_height="1dp"
+         android:background="#90909090"-->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#90909090</item>
+    </style>
+
+    <style name="HeaderTheme">
+        <!--  android:layout_width="fill_parent"
+          android:layout_height="wrap_content"-->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/activity_header_height</item>
+    </style>
+
+    <style name="AppIcoTheme">
+      <!--  android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:src="@drawable/app_ico_64"
+        android:layout_gravity="center_vertical"-->
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:contentDescription">@null</item>
+        <item name="android:src">@drawable/app_ico_64</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginLeft">5dp</item>
+    </style>
 </resources>
