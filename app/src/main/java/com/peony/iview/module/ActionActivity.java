@@ -1,7 +1,7 @@
 package com.peony.iview.module;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,7 +15,7 @@ import com.peony.iview.app.R;
 import com.peony.iview.define.ActionContentTypes;
 import com.peony.iview.define.CityAreas;
 
-public class ActionActivity extends Activity {
+public class ActionActivity extends FragmentActivity {
 
     private ArrayAdapter<CityAreas> mAreaAdpater;
     private ArrayAdapter<ActionContentTypes> mContentAdpater;

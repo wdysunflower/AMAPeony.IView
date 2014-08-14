@@ -4,10 +4,9 @@
     android:layout_height="match_parent"
     tools:context="com.peony.iview.module.action.ActionAMapFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <com.amap.api.maps2d.MapView
+        android:id="@+id/action_amap_mapview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
 
 </FrameLayout>

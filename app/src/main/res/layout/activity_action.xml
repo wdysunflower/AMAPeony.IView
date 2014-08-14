@@ -14,9 +14,15 @@
         android:id="@+id/separator"
         style="@style/SeparatorTheme" />
 
-    <TextView
-        android:text="@string/module_activity_action"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <FrameLayout
+        android:id="@+id/action_main_frame"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
+        <fragment
+            class="com.peony.iview.module.action.ActionAMapFragment"
+            android:id="@+id/action_amap_frag"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+    </FrameLayout>
 </LinearLayout>
