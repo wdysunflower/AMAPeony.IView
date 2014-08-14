@@ -14,11 +14,10 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.location.LocationManagerProxy;
 import com.amap.api.location.LocationProviderProxy;
-import com.amap.api.maps2d.AMap;
-import com.amap.api.maps2d.LocationSource;
-import com.amap.api.maps2d.MapView;
-import com.amap.api.maps2d.model.BitmapDescriptorFactory;
-import com.amap.api.maps2d.model.MyLocationStyle;
+import com.amap.api.maps.AMap;
+import com.amap.api.maps.LocationSource;
+import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.MyLocationStyle;
 import com.peony.iview.app.R;
 
 public class ActionAMapFragment extends Fragment implements LocationSource, AMapLocationListener {
