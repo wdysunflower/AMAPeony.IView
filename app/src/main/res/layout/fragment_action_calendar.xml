@@ -2,12 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.peony.iview.module.action.ActionListFragment">
+    tools:context="com.peony.iview.module.action.ActionCalendarFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <ListView
-        android:id="@+id/action_list_view"
+    <CalendarView
+        android:id="@+id/action_calendar_view"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"/>
 
 </FrameLayout>

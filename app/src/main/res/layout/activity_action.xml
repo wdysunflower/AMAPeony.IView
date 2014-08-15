@@ -25,9 +25,15 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />-->
 
-        <fragment
+       <!-- <fragment
             class="com.peony.iview.module.action.ActionListFragment"
             android:id="@+id/action_list_frag"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />-->
+
+        <fragment
+            class="com.peony.iview.module.action.ActionCalendarFragment"
+            android:id="@+id/action_calendar_frag"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
     </FrameLayout>
