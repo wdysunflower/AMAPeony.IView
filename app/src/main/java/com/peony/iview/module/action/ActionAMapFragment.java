@@ -1,9 +1,7 @@
 package com.peony.iview.module.action;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.location.Location;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,7 +15,6 @@ import com.amap.api.location.LocationProviderProxy;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
-import com.amap.api.maps.model.MyLocationStyle;
 import com.peony.iview.app.R;
 
 public class ActionAMapFragment extends Fragment implements LocationSource, AMapLocationListener {
@@ -74,7 +71,7 @@ public class ActionAMapFragment extends Fragment implements LocationSource, AMap
         mAMap.setMyLocationStyle(myLocationStyle);*/
 
         //mAMap.setMyLocationType(AMap.LOCATION_TYPE_MAP_FOLLOW);
-        
+
         mAMap.setLocationSource(this);// 设置定位监听
         mAMap.getUiSettings().setMyLocationButtonEnabled(true);// 设置默认定位按钮是否显示
         mAMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false

@@ -19,9 +19,15 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
-        <fragment
+     <!--   <fragment
             class="com.peony.iview.module.action.ActionAMapFragment"
             android:id="@+id/action_amap_frag"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />-->
+
+        <fragment
+            class="com.peony.iview.module.action.ActionListFragment"
+            android:id="@+id/action_list_frag"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
     </FrameLayout>

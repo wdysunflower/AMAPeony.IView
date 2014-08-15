@@ -2,7 +2,6 @@ package com.peony.iview.module;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -13,11 +12,11 @@ import android.widget.Spinner;
 
 import com.peony.iview.app.R;
 import com.peony.iview.define.ActionContentTypes;
-import com.peony.iview.define.CityAreas;
+import com.peony.iview.define.CityAreaTypes;
 
 public class ActionActivity extends FragmentActivity {
 
-    private ArrayAdapter<CityAreas> mAreaAdpater;
+    private ArrayAdapter<CityAreaTypes> mAreaAdpater;
     private ArrayAdapter<ActionContentTypes> mContentAdpater;
 
     private Spinner mAreaSpinner;
@@ -36,7 +35,7 @@ public class ActionActivity extends FragmentActivity {
     }
 
     private void initialAreaSpinner() {
-        mAreaAdpater = new ArrayAdapter<CityAreas>(this, android.R.layout.simple_spinner_item, CityAreas.values());
+        mAreaAdpater = new ArrayAdapter<CityAreaTypes>(this, android.R.layout.simple_spinner_item, CityAreaTypes.values());
         mAreaAdpater.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         View header = findViewById(R.id.include_action_header);
