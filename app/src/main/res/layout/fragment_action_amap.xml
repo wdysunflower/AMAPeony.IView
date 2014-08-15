@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     tools:context="com.peony.iview.module.action.ActionAMapFragment">
 
-    <com.amap.api.maps2d.MapView
+    <com.amap.api.maps.MapView
         android:id="@+id/action_amap_mapview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
