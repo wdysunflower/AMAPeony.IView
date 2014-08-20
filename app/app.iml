@@ -73,6 +73,7 @@
     <orderEntry type="library" exported="" name="AMap_Services_V2.2.1" level="project" />
     <orderEntry type="library" exported="" name="support-v4-19.0.1" level="project" />
     <orderEntry type="library" exported="" name="AMap_3DMap_V2.2.1" level="project" />
+    <orderEntry type="library" exported="" name="gson-1.6" level="project" />
     <orderEntry type="library" exported="" name="Android_Location_V1.2.0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-19.0.1" level="project" />
   </component>
