@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="IViewService:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/IViewService_jar</output-path>
+    <root id="root">
+      <element id="archive" name="IViewService.jar">
+        <element id="module-output" name="IViewService" />
+      </element>
+    </root>
+  </artifact>
+</component>

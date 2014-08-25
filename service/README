@@ -1,0 +1,11 @@
+IViewService模块为IView app的服务模块，其包含提供app相应服务的服务器和与服务器通信的客户端库。
+
+运行服务器
+使用intellij build artifacts后会生成IViewService.jar，其包含服务器与客户端库相应运行代码。
+在运行服务器之前，请先在运行服务器的机器上安装mysql，设置mysql root用户的密码为123456，并使用iview.sql初始化数据库。
+使用命令：java -jar IViewService.jar 运行服务器。
+注意需将IViewService.jar所依赖的libthrift、log4j、mysql、slfj等jar放在与IViewService.jar相同的目录下。
+
+使用客户端库
+直接添加对IViewService.jar的引用即可，客户端依赖libthrift、log4j以及slfj等jar。
+客户端的使用文档见Client类的文档注释，使用示例见ServiceTest类。
