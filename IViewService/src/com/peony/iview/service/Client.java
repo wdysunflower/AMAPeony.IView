@@ -11,6 +11,7 @@ import org.apache.thrift.protocol.TBinaryProtocol;
  * 在获取各种服务前请首先调用connect函数与服务器建立连接.
  * 本类中所有与服务器之间通讯的操作均为同步操作. 即服务器返回结果后,相应函数才返回.
  * 因此为了避免服务器由于长时间不返回结果造成的客户端阻塞. 请调用setTimeout设置超时时间.
+ * 本类的所有操作均不保证线程安全.
  */
 public class Client {
 
